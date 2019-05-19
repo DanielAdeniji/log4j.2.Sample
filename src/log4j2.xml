@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
 <Configuration monitorInterval="60">
-
     <Properties>
-    
    		<Property 
    			name="logPath">
    			log
  		</Property>
-        
         <Property 
         	name="rollingFileName">
         	sample
        	</Property>
-         
     </Properties>
     
     <Appenders>
-        
         <Console 
         		name="console" 
         		target="SYSTEM_OUT">
@@ -27,20 +21,16 @@
                      [%-5level] %d{yyyy-MM-dd HH:mm a} %msg
                 </pattern>>
             </PatternLayout>
-            
-        </Console>
+ 		</Console>
 		
 		<RollingFile 
 			name="rollingFile" 
 			fileName="${logPath}/${rollingFileName}.log" 
 			filePattern="${logPath}/${rollingFileName}_%d{yyyy-MM-dd}.log">
-			
-            <PatternLayout 
-            	
-            	pattern="[%highlight{%-5level}] %d{DEFAULT} %c{1}.%M() - %msg%n%throwable{short.lineNumber}" 
-            	
+            <PatternLayout  	
+            	pattern="[%highlight{%-5level}] %d{DEFAULT} %c{1}.%M() - %msg%n%throwable{short.lineNumber}"         	
             	/>
-            
+    
             <Policies>
                 <!-- Causes a rollover if the log file is older than the current JVM's start time -->
                 <OnStartupTriggeringPolicy />
@@ -50,7 +40,6 @@
                 	interval="1" 
                 	modulate="true" 
                 	/>
-                	
             </Policies>
             
             <!--
@@ -59,11 +48,9 @@
             <DefaultRolloverStrategy 
             	max="90"
             	/>
-            
-        </RollingFile>
+		</RollingFile>
                 
     </Appenders>
-
     <Loggers>
     
         <Logger name="org.hibernate.SQL" 
@@ -82,23 +69,17 @@
         	additivity="false">
         	
             <AppenderRef ref="console"/>
-        
-        
             <AppenderRef ref="rollingFile"/>
-        
         </Logger>
         
         <Root level="info">
-        
             <AppenderRef 
             	ref="console"
             	/>
-
             <AppenderRef 
             	ref="rollingFile"
-            	/>
-        
-        </Root>
+            	/>        
+         </Root>
     
     </Loggers>
 
