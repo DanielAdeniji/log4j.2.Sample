@@ -14,7 +14,7 @@ public final class hello
 	private static final Logger log 
 				= LogManager.getLogger
 					(
-							log4j2.hello.class
+							//log4j2.hello.class
 					);
 	
 	
